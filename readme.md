@@ -1,10 +1,6 @@
 <h1 align="center">
-  🧾<br>Meu Portfólio - BackEnd
+  🧾<br>Encurtador de Links
 </h1>
-
-<h4 align="center">
-  Encurtador de Links
-</h4>
 
 ## 📖 Docs
 
