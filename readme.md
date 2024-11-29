@@ -23,4 +23,6 @@ Para executar o projeto, só é necessário preencher o .env (use o .env-example
 
 `docker-compose up --build `
 
-Pronto, use nossa documentação no postman para testar as rotas.
+Pronto, use nossa documentação no postman para testar as rotas:
+Copie o arquivos dentro de docs, vá no postman e cole json. Logo após crie variáveis de ambiente para facilitar a execução dos testes.
+`url: http://localhost:3000/api` e `token: token gerado no login`
