@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node build/index.js",
     "build": "tsc && tsc-alias",
     "dev": "nodemon 'src/' --exec 'ts-node -r tsconfig-paths/register src/index.ts' -e ts",
     "create-migration": "npx sequelize-cli migration:create --migrations-path 'src/infrastructure/migrations' --name",
     "push-migrations": "npm run build && ts-node src/infrastructure/_sequelize/createDatabase.ts && npx sequelize-cli db:migrate",
-    "undo-migrations": "npx sequelize-cli db:migrate:undo:all"
+    "undo-migrations": "npx sequelize-cli db:migrate:undo:all",
+    "init": "npm run push-migrations && npm run start"
   },
   "author": "Lucas Luz @lucasfelipeluz",
   "license": "MIT",

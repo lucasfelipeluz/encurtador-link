@@ -38,34 +38,6 @@ class LinkController {
     }
   }
 
-  async get(request: Request, response: Response): Promise<Response> {
-    try {
-      const userLogged = request.cookies.userLogged;
-
-      const { code } = request.params;
-
-      const link = await this.linkService.get({
-        where: {
-          shortCode: code,
-          isActive: true,
-        },
-        userLogged: userLogged,
-      });
-
-      if (!link.idUser !== userLogged?.id) {
-        throw new NotFoundEntityError('Link not found');
-      }
-
-      return httpResponses.ok(response, link);
-    } catch (error) {
-      return httpResponses.handleServerError(
-        response,
-        strings.internalServerError,
-        error as ApplicationError,
-      );
-    }
-  }
-
   async getById(request: Request, response: Response): Promise<Response> {
     try {
       const { id } = request.params;
