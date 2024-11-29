@@ -112,9 +112,7 @@ class LinkService implements ILinkService {
 
     if (!isOwner) throw new NotFoundEntityError('Link not found');
 
-    var shortHash = this.generateShortHash(newEntity.getOriginalUrl());
-
-    const linkToUpdate = newEntity.toDomain(shortHash);
+    const linkToUpdate = newEntity.toDomain(isOwner.shortCode);
 
     await this.linkRepository.update(linkToUpdate, {
       where: {

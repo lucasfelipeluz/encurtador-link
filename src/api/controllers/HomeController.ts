@@ -29,7 +29,7 @@ class HomeController {
         userLogged: userLogged,
       });
 
-      return httpResponses.ok(response, link.originalUrl);
+      return httpResponses.ok(response, { url: link.originalUrl });
     } catch (error) {
       return httpResponses.handleServerError(
         response,

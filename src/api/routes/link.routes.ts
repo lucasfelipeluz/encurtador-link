@@ -31,7 +31,7 @@ router.post(
   linkController.create.bind(linkController) as Express.Application,
 );
 
-router.put(
+router.patch(
   '/:id',
   authMiddleware.handlePrivate.bind(authMiddleware) as Express.RequestHandler,
   linkController.update.bind(linkController) as Express.Application,
