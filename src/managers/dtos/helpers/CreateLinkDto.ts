@@ -3,38 +3,44 @@ import ValidationError from 'src/domain/errors/ValidationError';
 import { validateProperties } from 'src/domain/validations';
 
 class CreateLinkDto {
-  public shortCode: string;
-  public originalUrl: string;
+  private originalUrl: string;
+  private idUser: string | null;
 
-  constructor(shortCode: string, originalUrl: string) {
-    this.shortCode = shortCode;
+  constructor(originalUrl: string, idUser: string | null) {
     this.originalUrl = originalUrl;
+    this.idUser = idUser;
 
     this.validate();
   }
 
   private validate(): void {
-    validateProperties(this, ['shortCode', 'originalUrl']);
+    validateProperties(this, ['originalUrl']);
 
-    if (this.shortCode.length > 6) {
-      throw new ValidationError('Name must be between 3 and 100 characters');
-    }
     if (this.originalUrl.length < 3 || this.originalUrl.length > 120) {
       throw new ValidationError('Email must be between 3 and 120 characters');
     }
+
+    if (this.idUser && this.idUser.length !== 36) {
+      throw new ValidationError('Invalid user id');
+    }
   }
 
-  public toDomain(idUserLogged?: string): Link {
+  public toDomain(shortCode: string): Link {
     return new Link(
       0,
       this.originalUrl,
-      this.shortCode,
+      shortCode,
       true,
       new Date(),
       null,
       null,
-      idUserLogged ?? null,
+      this.idUser ?? null,
+      null,
     );
+  }
+
+  public getOriginalUrl(): string {
+    return this.originalUrl;
   }
 }
 

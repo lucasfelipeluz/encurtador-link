@@ -53,7 +53,6 @@ module.exports = {
       shortCode: {
         type: DataTypes.STRING(6),
         allowNull: false,
-        unique: true,
       },
       originalUrl: {
         type: DataTypes.TEXT,
@@ -121,7 +120,7 @@ module.exports = {
       },
       idUser: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: strings.users,
           key: strings.id,

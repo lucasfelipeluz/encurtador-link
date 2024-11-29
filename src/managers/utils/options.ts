@@ -13,6 +13,7 @@ export type SearchOptions<T> = {
     exclude?: (keyof T)[];
     include?: (keyof T)[];
   };
+  userLogged?: unknown;
 };
 
 export type CreationOptions = {

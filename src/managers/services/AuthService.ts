@@ -58,9 +58,13 @@ class AuthService implements IAuthService {
 
     user.password = '';
 
-    const token = jwt.sign(user, authConfig.secretKey, {
-      expiresIn: authConfig.expiresIn,
-    });
+    const token = jwt.sign(
+      { id: user.id, name: user.name, email: user.email, registered_in: user.createdAt },
+      authConfig.secretKey,
+      {
+        expiresIn: authConfig.expiresIn,
+      },
+    );
 
     return new UserLoggedDto(user.name, email, token);
   }

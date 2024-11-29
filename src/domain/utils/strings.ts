@@ -21,6 +21,13 @@ const strings = {
   unauthorizedError: 'UnauthorizedError',
   validationError: 'ValidationError',
   notImplementedError: 'NotImplementedError',
+
+  urlNotFound: 'URL not found',
+  tooManyRequests: 'Too many requests from this IP, please try again later.',
+  internalServerError: 'A server error has occurred.',
+  applicationRunning: 'Application running on port:',
+  serverMode: 'Server mode:',
+  notPermissionError: 'You do not have permission to access this resource.',
 };
 
 export default strings;

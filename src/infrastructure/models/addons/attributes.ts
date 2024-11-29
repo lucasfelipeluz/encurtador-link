@@ -77,7 +77,7 @@ const accessMetrics: ModelAttributes<AccessMetricsModel> = {
   },
   idUser: {
     type: DataTypes.UUID,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: strings.users,
       key: strings.id,
@@ -102,7 +102,6 @@ const link: ModelAttributes<LinkModel> = {
   shortCode: {
     type: DataTypes.STRING(6),
     allowNull: false,
-    unique: true,
   },
   originalUrl: {
     type: DataTypes.TEXT,

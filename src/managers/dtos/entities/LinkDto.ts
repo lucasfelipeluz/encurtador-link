@@ -5,6 +5,7 @@ class LinkDto {
 
   public shortCode: string;
   public originalUrl: string;
+  public clicks: number;
 
   public isActive: boolean;
   public createdAt: Date;
@@ -17,6 +18,7 @@ class LinkDto {
     this.id = link.id;
     this.originalUrl = link.originalUrl;
     this.shortCode = link.shortCode;
+    this.clicks = link.accessMetrics ? link.accessMetrics?.length : 0;
     this.isActive = link.isActive;
     this.createdAt = link.createdAt;
     this.updatedAt = link.updatedAt;

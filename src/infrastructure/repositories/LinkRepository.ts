@@ -13,7 +13,7 @@ class LinkRepository implements IEntityRepository<Link>, ILinkRepository {
   constructor() {}
 
   async getAll(options: FindOptions<Link>): Promise<Link[]> {
-    const result = await LinkModel.findAll(options);
+    const result = await LinkModel.findAll({ ...options, include: relationships.link });
 
     if (result.length < 1) {
       return [] as Link[];
@@ -23,7 +23,7 @@ class LinkRepository implements IEntityRepository<Link>, ILinkRepository {
   }
 
   async getOne(options: FindOptions<Link>): Promise<Link | null> {
-    const result = await LinkModel.findOne(options);
+    const result = await LinkModel.findOne({ ...options, include: relationships.link });
 
     return result as Link;
   }
@@ -33,7 +33,7 @@ class LinkRepository implements IEntityRepository<Link>, ILinkRepository {
       where: {
         id: id,
       },
-      include: relationships.user,
+      include: relationships.link,
     });
 
     return result as Link;
