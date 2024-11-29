@@ -1,6 +1,6 @@
 import Link from './Link';
 
-class AcessMetrics {
+class AccessMetrics {
   public id: number;
 
   public isActive: boolean;
@@ -12,7 +12,7 @@ class AcessMetrics {
   public idUser: string;
   public idConsultant: string | null;
 
-  public links: Link[];
+  public links: Link | null;
 
   constructor(
     id: number,
@@ -23,7 +23,7 @@ class AcessMetrics {
     idLink: number,
     idUser: string,
     idConsultant: string | null,
-    links: Link[],
+    links: Link | null,
   ) {
     this.id = id;
     this.isActive = isActive;
@@ -37,4 +37,4 @@ class AcessMetrics {
   }
 }
 
-export default AcessMetrics;
+export default AccessMetrics;

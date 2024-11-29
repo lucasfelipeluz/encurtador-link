@@ -3,17 +3,29 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && tsc-alias",
+    "create-migration": "npx sequelize-cli migration:create --migrations-path 'src/infrastructure/migrations' --name",
+    "push-migrations": "npm run build && ts-node src/infrastructure/_sequelize/createDatabase.ts && npx sequelize-cli db:migrate",
+    "undo-migrations": "npx sequelize-cli db:migrate:undo:all"
   },
   "author": "Lucas Luz @lucasfelipeluz",
   "license": "MIT",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
-    "sequelize": "^6.37.5"
+    "jsonwebtoken": "^9.0.2",
+    "sequelize": "^6.37.5",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.1",
+    "mysql2": "^3.11.5",
+    "sequelize-cli": "^6.6.2",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.10",
     "tsyringe": "^4.8.0",
     "typescript": "5.7.2"
   }
