@@ -12,7 +12,7 @@ class AccessMetrics {
   public idUser: string;
   public idConsultant: string | null;
 
-  public links: Link;
+  public links: Link | null;
 
   constructor(
     id: number,
@@ -23,7 +23,7 @@ class AccessMetrics {
     idLink: number,
     idUser: string,
     idConsultant: string | null,
-    links: Link,
+    links: Link | null,
   ) {
     this.id = id;
     this.isActive = isActive;

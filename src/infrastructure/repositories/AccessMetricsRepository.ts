@@ -9,7 +9,9 @@ import relationships from 'src/infrastructure/models/addons/relationships';
 import { injectable } from 'tsyringe';
 
 @injectable()
-class LinkRepository implements IEntityRepository<AccessMetrics>, IAccessMetricsRepository {
+class AccessMetricsRepository
+  implements IEntityRepository<AccessMetrics>, IAccessMetricsRepository
+{
   constructor() {}
 
   async getAll(options: FindOptions<AccessMetrics>): Promise<AccessMetrics[]> {
@@ -64,4 +66,4 @@ class LinkRepository implements IEntityRepository<AccessMetrics>, IAccessMetrics
   }
 }
 
-export default LinkRepository;
+export default AccessMetricsRepository;
