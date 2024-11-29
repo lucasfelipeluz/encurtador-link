@@ -9,7 +9,7 @@ class AccessMetrics {
   public deletedAt: Date | null;
 
   public idLink: number;
-  public idUser: string;
+  public idUser: string | null;
   public idConsultant: string | null;
 
   public links: Link | null;
@@ -21,7 +21,7 @@ class AccessMetrics {
     updatedAt: Date | null,
     deletedAt: Date | null,
     idLink: number,
-    idUser: string,
+    idUser: string | null,
     idConsultant: string | null,
     links: Link | null,
   ) {

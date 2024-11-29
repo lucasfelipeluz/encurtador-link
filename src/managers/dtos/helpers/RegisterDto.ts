@@ -4,10 +4,10 @@ import { validateProperties } from 'src/domain/validations';
 
 class RegisterDto {
   private name: string;
-  private email: string | null;
+  private email: string;
   private password: string;
 
-  constructor(name: string, email: string | null, password: string) {
+  constructor(name: string, email: string, password: string) {
     this.name = name;
     this.email = email;
     this.password = password;
@@ -21,9 +21,14 @@ class RegisterDto {
     if (this.name.length < 3 || this.name.length > 100) {
       throw new ValidationError('Name must be between 3 and 100 characters');
     }
-    if (this.email && (this.email.length < 3 || this.email.length > 120)) {
+    if (this.email.length < 3 || this.email.length > 120) {
       throw new ValidationError('Email must be between 3 and 120 characters');
     }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.email)) {
+      throw new ValidationError('Email format is invalid');
+    }
+
     if (this.password.length < 8 || this.password.length > 30) {
       throw new ValidationError('Password must be between 8 and 100 characters');
     }

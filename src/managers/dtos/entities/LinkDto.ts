@@ -1,3 +1,4 @@
+import AccessMetrics from 'src/domain/entities/AccessMetrics';
 import Link from 'src/domain/entities/Link';
 
 class LinkDto {

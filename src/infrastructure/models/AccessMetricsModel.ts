@@ -14,7 +14,7 @@ class AccessMetricsModel extends Model<AccessMetrics> {
   declare deletedAt: Date | null;
 
   declare idLink: number;
-  declare idUser: string;
+  declare idUser: string | null;
   declare idConsultant: string | null;
 
   declare links: LinkModel;

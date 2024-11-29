@@ -9,7 +9,7 @@ class AccessMetricsDto {
   public updatedAt: Date | null;
   public deletedAt: Date | null;
 
-  public idUser: string;
+  public idUser: string | null;
   public idLink: number;
   public idConsultant: string | null;
 
