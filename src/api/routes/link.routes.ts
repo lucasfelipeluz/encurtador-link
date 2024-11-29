@@ -15,7 +15,7 @@ router.get(
 
 router.get(
   '/code/:code',
-  authMiddleware.handlePermitive.bind(authMiddleware) as Express.RequestHandler,
+  authMiddleware.handlePrivate.bind(authMiddleware) as Express.RequestHandler,
   linkController.get.bind(linkController) as Express.Application,
 );
 
@@ -23,12 +23,6 @@ router.get(
   '/:id',
   authMiddleware.handlePrivate.bind(authMiddleware) as Express.RequestHandler,
   linkController.getById.bind(linkController) as Express.Application,
-);
-
-router.get(
-  '/analytics/:id',
-  authMiddleware.handlePrivate.bind(authMiddleware) as Express.RequestHandler,
-  linkController.getAnalytics.bind(linkController) as Express.Application,
 );
 
 router.post(

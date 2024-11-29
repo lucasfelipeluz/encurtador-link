@@ -1,3 +1,5 @@
+import AccessMetrics from './AccessMetrics';
+
 class Link {
   public id: number;
 
@@ -11,6 +13,8 @@ class Link {
 
   public idUser: string | null;
 
+  public accessMetrics: AccessMetrics[] | null;
+
   constructor(
     id: number,
     originalUrl: string,
@@ -20,6 +24,7 @@ class Link {
     updatedAt: Date | null,
     deletedAt: Date | null,
     idUser: string | null,
+    accessMetrics: AccessMetrics[] | null,
   ) {
     this.id = id;
     this.originalUrl = originalUrl;
@@ -29,6 +34,7 @@ class Link {
     this.updatedAt = updatedAt;
     this.deletedAt = deletedAt;
     this.idUser = idUser;
+    this.accessMetrics = accessMetrics;
   }
 }
 

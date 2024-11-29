@@ -3,6 +3,7 @@ import Link from 'src/domain/entities/Link';
 import attributes from './addons/attributes';
 import options from './addons/options';
 import strings from 'src/domain/utils/strings';
+import AccessMetricsModel from './AccessMetricsModel';
 
 class LinkModel extends Model<Link> {
   declare id: number;
@@ -16,6 +17,8 @@ class LinkModel extends Model<Link> {
   declare deletedAt: Date | null;
 
   declare idUser: string | null;
+
+  declare accessMetrics: AccessMetricsModel[];
 }
 
 LinkModel.init(attributes.link, options.generateDefaultOptions(strings.links));

@@ -1,5 +1,4 @@
 import AccessMetrics from 'src/domain/entities/AccessMetrics';
-import LinkDto from './LinkDto';
 
 class AccessMetricsDto {
   public id: number | null;
@@ -13,8 +12,6 @@ class AccessMetricsDto {
   public idLink: number;
   public idConsultant: string | null;
 
-  public links: LinkDto | null;
-
   constructor(accessMetrics: AccessMetrics) {
     this.id = accessMetrics.id;
     this.isActive = accessMetrics.isActive;
@@ -24,7 +21,6 @@ class AccessMetricsDto {
     this.idLink = accessMetrics.idLink;
     this.idConsultant = accessMetrics.idConsultant;
     this.idUser = accessMetrics.idUser;
-    this.links = accessMetrics.links ? new LinkDto(accessMetrics.links) : null;
   }
 }
 

@@ -35,6 +35,7 @@ class CreateLinkDto {
       null,
       null,
       this.idUser ?? null,
+      null,
     );
   }
 

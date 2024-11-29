@@ -7,6 +7,7 @@ import ApplicationError from 'src/domain/errors/ApplicationError';
 import strings from 'src/domain/utils/strings';
 import CreateLinkDto from 'src/managers/dtos/helpers/CreateLinkDto';
 import UpdateLinkDto from 'src/managers/dtos/helpers/UpdateLinkDto';
+import NotFoundEntityError from 'src/domain/errors/NotFoundEntityError';
 
 @autoInjectable()
 class LinkController {
@@ -39,7 +40,7 @@ class LinkController {
 
   async get(request: Request, response: Response): Promise<Response> {
     try {
-      const userLogged = request.cookies?.userLogged;
+      const userLogged = request.cookies.userLogged;
 
       const { code } = request.params;
 
@@ -50,6 +51,10 @@ class LinkController {
         },
         userLogged: userLogged,
       });
+
+      if (!link.idUser !== userLogged?.id) {
+        throw new NotFoundEntityError('Link not found');
+      }
 
       return httpResponses.ok(response, link);
     } catch (error) {
@@ -73,27 +78,6 @@ class LinkController {
       });
 
       return httpResponses.ok(response, link);
-    } catch (error) {
-      return httpResponses.handleServerError(
-        response,
-        strings.internalServerError,
-        error as ApplicationError,
-      );
-    }
-  }
-
-  async getAnalytics(request: Request, response: Response): Promise<Response> {
-    try {
-      const { id } = request.params;
-      const userLogged = request.cookies.userLogged;
-
-      const analytics = await this.linkService.getAnalytics(Number(id), {
-        where: {
-          idUser: userLogged?.id,
-        },
-      });
-
-      return httpResponses.ok(response, analytics);
     } catch (error) {
       return httpResponses.handleServerError(
         response,
