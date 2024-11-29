@@ -1,5 +1,5 @@
-import { StatusCodes } from 'src/core/enums';
 import strings from 'src/domain/utils/strings';
+import { StatusCodes } from 'src/domain/utils/constants';
 
 class ApplicationError extends Error {
   public code: number;

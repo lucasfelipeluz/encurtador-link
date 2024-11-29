@@ -1,6 +1,6 @@
 import strings from 'src/domain/utils/strings';
 import ApplicationError from './ApplicationError';
-import { StatusCodes } from 'src/core/enums';
+import { StatusCodes } from 'src/domain/utils/constants';
 
 class BadRequestError extends ApplicationError {
   constructor(message: string) {
